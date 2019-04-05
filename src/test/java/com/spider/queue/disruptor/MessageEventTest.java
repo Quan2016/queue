@@ -12,7 +12,7 @@ public class MessageEventTest {
 	@Before
 	public void init(){
 		int bufferSize = 1024;//bufferSize必须是2的幂
-		Disruptor<MessageEvent> disruptor = new Disruptor<MessageEvent>(new MessageEventFactory(), bufferSize, ProducerType.SINGLE,DaemonThreadFactory.INSTANCE);
+		Disruptor<MessageEvent> disruptor = new Disruptor<MessageEvent>(new MessageEventFactory(), bufferSize, DaemonThreadFactory.INSTANCE);
 		disruptor.handleEventsWith(new MessageEventHandler()).then(new MessageEventClearHandler());//定义由谁消费信息
 //		disruptor.handleEventsWith(new MessageEventHandler());//定义由谁消费信息
 		disruptor.start();
